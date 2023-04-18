@@ -22,7 +22,7 @@ To run the project use the following command:
 
 ```bash
 docker-compose build
-docker-compose --env-file .env.dev up
+docker-compose --env-file .env up
 ```
 
 ## Documentation
@@ -45,14 +45,12 @@ docker run cake-pals npm run test:cov
 | Configure Redis as Cache Manager     | 100%                 |
 | Users API Endpoints                  | 100%                 |
 | Create User and Baker Authentication | 100%                 |
-| Users API Endpoints                  | 100%                 |
 | Bakers API Endpoints                 | 100%                 |
 | Products API Endpoints               | 100%                 |
 | Orders API Endpoints                 | 100%                 |
 | Unit Testing                         | 20%                  |
 | E2E Testing                          | 0%                   |
 | API Security                         | 50%                  |
-| API Throttling                       | 0%                   |
 | API Pagination                       | 0%                   |
 | Dockerized Development Environment   | 100%                 |
 | Kubernetes Deployment Script         | 0%                   |
