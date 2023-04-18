@@ -18,23 +18,19 @@ This is a simple backend API for Cake-pals application
 
 ## Running the app
 
-To run the project use the following command:
+To run the project use the following commands:
 
 ```bash
 docker-compose build
-docker-compose --env-file .env up
+docker-compose up
+npm run start:dev
 ```
 
 ## Documentation
 
 - to check docs visit localhost:3000/api/v1
 - download postman collection from localhost:3000/api/v1-json
-
-# test coverage
-
-```bash
-docker run cake-pals npm run test:cov
-```
+- you can also check database from phpMyAdmin by visiting http://localhost:8080/ (-u root -p root) for dev purposes
 
 ## Roadmap
 
@@ -52,7 +48,7 @@ docker run cake-pals npm run test:cov
 | E2E Testing                          | 0%                   |
 | API Security                         | 50%                  |
 | API Pagination                       | 0%                   |
-| Dockerized Development Environment   | 100%                 |
+| Dockerized Development Environment   | 80%                  |
 | Kubernetes Deployment Script         | 0%                   |
 | Documentation                        | 70%                  |
 | Scalability                          | 90%                  |

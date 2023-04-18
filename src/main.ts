@@ -6,7 +6,7 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
-
+  app.enableCors({ allowedHeaders: '*', origin: '*' });
   const config = new DocumentBuilder()
     .setTitle('Cake-Pals API')
     .setDescription('Cake-Pals API description')
