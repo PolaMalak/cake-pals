@@ -1,7 +1,7 @@
 import { Entity, Column, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Baker } from './baker.entity';
 import { Product } from './product.entity';
-import { OrderStatusEnum } from 'src/enums/order-status.enum';
+import { OrderStatusEnum } from '../enums/order-status.enum';
 import { User } from './user.entity';
 
 @Entity()

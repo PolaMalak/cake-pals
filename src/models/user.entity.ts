@@ -1,6 +1,6 @@
 import { BeforeInsert, Column, Entity, OneToMany } from 'typeorm';
 import { EntityBase } from './base';
-import hash from 'src/helpers/hash';
+import hash from '../helpers/hash';
 import { Schedule } from './schedule.entity';
 
 @Entity()
