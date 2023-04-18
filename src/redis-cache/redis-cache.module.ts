@@ -16,7 +16,7 @@ import { CacheModule, CacheInterceptor } from '@nestjs/cache-manager';
         port: configService.get<string>('redis.port'),
         isGlobal: true,
         max: configService.get<number>('redis.max'),
-        ttl: configService.get<number>('redis.ttl'),
+        ttl: configService.get<number>('redis.ttl') || 500,
       }),
     }),
   ],
