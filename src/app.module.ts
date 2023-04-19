@@ -12,11 +12,12 @@ import { PassportModule } from '@nestjs/passport';
 import { ProductsModule } from './products/products.module';
 import { SchedulesModule } from './schedules/schedules.module';
 import { RedisCacheModule } from './redis-cache/redis-cache.module';
+import redisConfig from './config/redis.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      load: [databaseConfig, authConfig],
+      load: [databaseConfig, redisConfig, authConfig],
       isGlobal: true,
     }),
     PassportModule,

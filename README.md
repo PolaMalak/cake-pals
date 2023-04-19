@@ -21,9 +21,7 @@ This is a simple backend API for Cake-pals application
 To run the project use the following commands:
 
 ```bash
-docker-compose build
-docker-compose up
-npm run start:dev
+docker-compose --env-file .env.dev up
 ```
 
 ## Documentation
@@ -48,7 +46,7 @@ npm run start:dev
 | E2E Testing                          | 0%                   |
 | API Security                         | 50%                  |
 | API Pagination                       | 0%                   |
-| Dockerized Development Environment   | 80%                  |
+| Dockerized Development Environment   | 100%                 |
 | Kubernetes Deployment Script         | 0%                   |
 | Documentation                        | 70%                  |
 | Scalability                          | 90%                  |
