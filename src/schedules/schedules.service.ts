@@ -25,7 +25,6 @@ export class SchedulesService {
     return await this.scheduleRepo.delete({});
   }
   async checkAllAvailableSlots(productId: string, userId: string) {
-    console.log(productId);
     const product = await this.productsService.findOneById(productId, [
       'baker',
     ]);
@@ -121,7 +120,7 @@ export class SchedulesService {
     const order = await this.scheduleRepo
       .createQueryBuilder('order')
       .leftJoin('order.user', 'user')
-      .leftJoin('order.baker', 'baker')
+      .leftJoinAndSelect('order.baker', 'baker')
       .where('order.id = :orderId', { orderId: orderId })
       .andWhere('user.id = :userId', { userId: userId })
       .getOne();

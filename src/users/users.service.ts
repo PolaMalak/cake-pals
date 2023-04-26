@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { UsersRepository } from './users.repository';
 import { User } from 'src/models/user.entity';
 import { CreateUserDto } from './dtos/cerate-user.dto';
@@ -45,6 +45,14 @@ export class UsersService {
 
   async createUser(userDto: CreateUserDto) {
     const user = this.usersRepo.create({ ...userDto });
-    return await this.usersRepo.save(user);
+    try {
+      await this.usersRepo.save(user);
+      return await this.findOneById(user.id, []);
+    } catch (error) {
+      throw new BadRequestException({
+        statusCode: 404,
+        message: error.message,
+      });
+    }
   }
 }
