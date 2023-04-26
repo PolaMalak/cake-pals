@@ -9,7 +9,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { SchedulesService } from './schedules.service';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { CreateScheduleDto } from './dtos/create-schedule.dto';
 import { JwtUserAuthGuard } from 'src/auth/users/user.guard';
 import { JwtBakerAuthGuard } from 'src/auth/bakers/baker.guard';
@@ -22,12 +22,14 @@ export class SchedulesController {
   constructor(private scheduleService: SchedulesService) {}
 
   @UseGuards(JwtUserAuthGuard)
+  @ApiBearerAuth()
   @Post('/new')
   async addOrder(@Request() req: any, @Body() scheduleDto: CreateScheduleDto) {
     return this.scheduleService.createSchedule(scheduleDto, req.user.id);
   }
 
   @UseGuards(JwtUserAuthGuard)
+  @ApiBearerAuth()
   @Get('/availableSlots/:productId')
   async availableSlots(
     @Request() req: any,
@@ -42,6 +44,7 @@ export class SchedulesController {
   }
 
   @UseGuards(JwtBakerAuthGuard)
+  @ApiBearerAuth()
   @Post('/baker/manage/:orderId')
   async manageOrders(
     @Request() req,
@@ -56,11 +59,14 @@ export class SchedulesController {
   }
 
   @UseGuards(JwtUserAuthGuard)
-  @Post('/user/orders')
+  @ApiBearerAuth()
+  @Get('/user/orders')
   async getUserOrders(@Request() req) {
     return await this.scheduleService.getUserFulfilledOrders(req.user.id);
   }
+
   @UseGuards(JwtUserAuthGuard)
+  @ApiBearerAuth()
   @Post('/user/orders/rate/:orderId')
   async rateOrder(
     @Request() req,

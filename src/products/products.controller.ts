@@ -12,7 +12,7 @@ import {
 import { ProductsService } from './products.service';
 import { JwtBakerAuthGuard } from 'src/auth/bakers/baker.guard';
 import { CreateProductDto } from './dtos/create-product.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @Controller('products')
 @ApiTags('products')
@@ -20,18 +20,21 @@ export class ProductsController {
   constructor(private productsService: ProductsService) {}
 
   @UseGuards(JwtBakerAuthGuard)
+  @ApiBearerAuth()
   @Post('/add')
   async addProduct(@Body() productDto: CreateProductDto, @Request() req) {
     return await this.productsService.addProduct(productDto, req.user.id);
   }
 
   @UseGuards(JwtBakerAuthGuard)
+  @ApiBearerAuth()
   @Delete('/remove/:productId')
   async removeProduct(@Param('productId') productId: string, @Request() req) {
     return await this.productsService.removeProduct(productId, req.user.id);
   }
 
   @UseGuards(JwtBakerAuthGuard)
+  @ApiBearerAuth()
   @Put('/update/:productId')
   async updateProduct(
     @Param('productId') productId: string,
