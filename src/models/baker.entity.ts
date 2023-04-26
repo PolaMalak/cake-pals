@@ -14,7 +14,7 @@ export class Baker extends User {
   @Column('time')
   endAt: string;
 
-  @Column({ type: 'int', nullable: true, default: 5 })
+  @Column({ type: 'float', nullable: true, default: 5 })
   rating: number;
 
   @Column({ type: 'int', nullable: true, default: 0 })

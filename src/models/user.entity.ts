@@ -1,4 +1,4 @@
-import { BeforeInsert, Column, Entity, OneToMany } from 'typeorm';
+import { BeforeInsert, Column, Entity, OneToMany, Unique } from 'typeorm';
 import { EntityBase } from './base';
 import hash from '../helpers/hash';
 import { Schedule } from './schedule.entity';
@@ -8,7 +8,7 @@ export class User extends EntityBase {
   @Column('varchar', { length: 255, nullable: true })
   name: string;
 
-  @Column('varchar', { nullable: true })
+  @Column('varchar', { nullable: true, unique: true })
   email: string;
 
   @Column('varchar', { length: 255, nullable: true, select: false })
